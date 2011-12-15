@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Skins &mdash; CKEditor Sample</title>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+    
+    <style>
+    body 		{ margin-top:50px; background-color:#fff; font-family:Helvetica, Arial, FreeSans, san-serif; color:#404040; }
+	.container 	{ margin:0 auto; width:900px; }
+	
+	h1 			{ font-size:30px; margin:40px 0 28px; padding:0 0 9px; border-bottom:1px solid #ccc; }
+	h1 a,
+	h1 a:visited,
+	h1 a:focus,
+	h1 a:hover	{ color:#404040; }
+	h1 span		{ font-size:18px; font-weight:normal; color:#BFBFBF; }
+	h1 span a,
+	h1 span a:visited,
+	h1 span a:focus,
+	h1 span a:hover		{ color:#BFBFBF; }
+    h1 a 		{ text-decoration:none; }
+	</style>
+    
+</head>
+<body>
+
+<div class="container">
+	<h1>Demo <a href="https://github.com/Kunstmaan/BootstrapCK-Skin">BootstrapCK-Skin</a>
+      <span>by <a href="https://github.com/Kunstmaan">Kunstmaan</a></span></h1>
+	<p>
+		<textarea cols="80" id="editor_BootstrapCK-Skin" name="editor_BootstrapCK-Skin" rows="10">&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
+		<script type="text/javascript">
+		//<![CDATA[
+			CKEDITOR.replace( 'editor_BootstrapCK-Skin',
+				{
+				skin : 'BootstrapCK-Skin'
+				});
+		//]]>
+		</script>
+	</p>
+</div>
+
+</body>
+</html>
