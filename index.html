@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
 
   <title>Kunstmaan/BootstrapCK-Skin @ GitHub</title>
+  
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
   <style type="text/css">
     body 		{ margin-top: 1.0em; background-color: #fff; font-family: Helvetica, Arial, FreeSans, san-serif; color: #404040; }
-    #container 	{ margin: 0 auto; width: 700px; }
+    #container 	{ margin: 0 auto; width: 900px; padding:0 0 20px; }
 	
     h1 			{ font-size:40px; margin:40px 0 28px; padding:110px 0 9px; border-bottom:1px solid #ccc; }
 	h1 a,
@@ -22,14 +24,22 @@
     h1 a 		{ text-decoration:none; }
     h2 			{ font-size:20px; margin:10px 0 8px; }
     h3 			{ text-align:center; }
-	p 			{ margin:0 0 30px; font-size:14px; }
+	p 			{ margin:0 0 30px; font-size:13px; line-height:18px; }
     a,
 	a:visited,
-	a:focus		{ color:#404040; }
-	a:hover		{ color:#000; }
+	a:focus		{ color:#0069D6; text-decoration:none; }
+	a:hover		{ color:#00438A; text-decoration:underline; }
+	
+	.about		{ margin:0 0 30px; }
+	.about p	{ margin:0 0 5px; }
+	.about h4 	{ font-size:14px; margin:10px 0 5px; }
+	.about span { background-color:#FEE9CC; padding:1px 3px; }
 	
     .download 		{ float: right; }
     pre 			{ background: #f5f5f5; color:#404040; padding:19px; border:1px solid rgba(0, 0, 0, 0.05); border-radius:4px; box-shadow:0 1px 1px rgba(0, 0, 0, 0.05) inset; margin:-20px 0 0; }
+	
+	.twitter 	{ margin:-20px 0 40px; color:#666; }
+	.twitter iframe	{ vertical-align:bottom; margin:0 0 0 5px; }
 	
     .footer 		{ text-align:center; padding-top:30px; font-size:14px; color:#808080; }
 	.footer a,
@@ -53,9 +63,40 @@
 
     <h1><a href="https://github.com/Kunstmaan/BootstrapCK-Skin">BootstrapCK-Skin</a>
       <span>by <a href="https://github.com/Kunstmaan">Kunstmaan</a></span></h1>
-
+	        
   	<h2>Demo</h2>
-    <p><a href="demo.html">demo</a></p>
+    <!--<p><a href="demo.html">demo</a></p>-->
+    <p>
+		<textarea cols="80" id="editor_BootstrapCK-Skin" name="editor_BootstrapCK-Skin" rows="10">&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
+		<script type="text/javascript">
+		//<![CDATA[
+			CKEDITOR.replace( 'editor_BootstrapCK-Skin',
+				{
+				skin : 'BootstrapCK-Skin'
+				});
+		//]]>
+		</script>
+	</p>
+    
+    <p class="twitter">Like what you see? Let the world know! 
+    	<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kunstmaan.github.com/BootstrapCK-Skin/" data-via="" data-count="horizontal" data-text="A CKEditor skin based on Twitter Bootstrap by Kunstmaan">Tweet</a>
+    </p>
+    
+    <div class="about">
+        <h2>About</h2>
+        <p>The BootstrapCK-Skin is a skin for <a href="http://ckeditor.com/" target="_blank">CKEditor</a> based on <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> styles.
+        <br />
+        Some things couln't be changed inside the skin, like the smileys and the position of the browse buttons when inserting an image or a flash.
+        <br />
+        Here's how you fix that:</p>
+        <h4>Smileys</h4>
+        <p>Go to <span>plugins &gt; smiley &gt; dialogs</span> , and replace <span>smiley.js</span> with <a href="#" target="_blank">this one</a>.<br />
+        And grab your new images over <a href="#" target="_blank">here</a>.</p>
+        
+        <h4>Browse buttons</h4>
+        <p>Go to <span>plugins &gt; image &gt; dialogs &gt; image.js</span> and to <span>plugins &gt; flash &gt; dialogs &gt; flash.js</span><br />
+        In both, change the margin-top to 17px (instead of 10px).</p>
+    </div>
     
 	<h2>Authors</h2>
     <p>Indri Kenens (indri.kenens@kunstmaan.be)</p>
@@ -77,6 +118,43 @@
     </div>
 
   </div>
+
+
+<!-- latest jQuery -->
+<script src="js/jquery-1.7.1.min.js"></script>
+
+<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID -->
+<script src="js/analytics.js"></script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXX-X']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!-- Twitter -->
+<script type="text/javascript"> 
+  (function(){
+	  var twitterWidgets = document.createElement('script');
+	  twitterWidgets.type = 'text/javascript';
+	  twitterWidgets.async = true;
+	  twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+	  twitterWidgets.onload = _ga.trackTwitter;
+	  document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+  })();
+</script>
+
+<!-- CHROME FRAME FOR IE6 -->
+<!--[if lt IE 7 ]>
+<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+
 
 </body>
 </html>
