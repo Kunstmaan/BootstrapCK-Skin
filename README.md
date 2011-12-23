@@ -1,7 +1,7 @@
 # About [BootstrapCK-Skin][BootstrapCK-Skin]
 
 The [BootstrapCK-Skin][BootstrapCK-Skin] is a skin for [CKEditor][CKEditor] based on [Twitter Bootstrap][Twitter Bootstrap] styles.<br />
-Some things couln't be changed inside the skin, like the smileys and the position of the browse buttons when inserting an image or a flash.<br />
+Some things couldn't be changed inside the skin, like the smileys and the position of the browse buttons when inserting an image or a flash.<br />
 Here's how you fix that:
 
 ## Smileys
