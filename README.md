@@ -14,10 +14,13 @@ And grab your new images over [here][here].
 Go to <code>plugins > image > dialogs > image.js</code> and to <code>plugins > flash > dialogs > flash.js</code><br />
 In both, change the margin-top to 17px (instead of 10px).
 
+# Demo
+[http://kunstmaan.github.com/BootstrapCK-Skin/][http://kunstmaan.github.com/BootstrapCK-Skin/]
 
 [BootstrapCK-Skin]: https://github.com/Kunstmaan/BootstrapCK-Skin "BootstrapCK-Skin"
 [CKEditor]: http://ckeditor.com/ "CKEditor"
 [Twitter Bootstrap]: http://twitter.github.com/bootstrap/ "Twitter Bootstrap"
 [this one]: http://kunstmaan.github.com/BootstrapCK-Skin/smiley.js "smiley.js"
 [here]: http://kunstmaan.github.com/BootstrapCK-Skin/smileys.zip "smileys.zip"
+[http://kunstmaan.github.com/BootstrapCK-Skin/]: http://kunstmaan.github.com/BootstrapCK-Skin/ "Demo"
 [kunstmaan]: http://www.kunstmaan.be "Kunstmaan"
