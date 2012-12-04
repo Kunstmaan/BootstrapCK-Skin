@@ -1,7 +1,236 @@
-﻿/*
+/*
 Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
-CKEDITOR.skins.add('BootstrapCK-Skin',(function(){var a='cke_ui_color';return{editor:{css:['editor.css']},dialog:{css:['dialog.css']},richcombo:{canGroup:false},templates:{css:['templates.css']},margins:[0,0,0,0],init:function(b){if(b.config.width&&!isNaN(b.config.width))b.config.width-=12;var c=[],d=/\$color/g,e='/* UI Color Support */.cke_skin_BootstrapCK-Skin .cke_menuitem .cke_icon_wrapper{\tbackground-color: $color !important;\tborder-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover .cke_icon_wrapper,.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus .cke_icon_wrapper,.cke_skin_BootstrapCK-Skin .cke_menuitem a:active .cke_icon_wrapper{\tbackground-color: $color !important;\tborder-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover .cke_label,.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus .cke_label,.cke_skin_BootstrapCK-Skin .cke_menuitem a:active .cke_label{\tbackground-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:hover .cke_label,.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:focus .cke_label,.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:active .cke_label{\tbackground-color: transparent !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:hover .cke_icon_wrapper,.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:focus .cke_icon_wrapper,.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:active .cke_icon_wrapper{\tbackground-color: $color !important;\tborder-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled .cke_icon_wrapper{\tbackground-color: $color !important;\tborder-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuseparator{\tbackground-color: $color !important;}.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover,.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus,.cke_skin_BootstrapCK-Skin .cke_menuitem a:active{\tbackground-color: $color !important;}';if(CKEDITOR.env.webkit){e=e.split('}').slice(0,-1);for(var f=0;f<e.length;f++)e[f]=e[f].split('{');}function g(j){var k=j.getById(a);if(!k){k=j.getHead().append('style');k.setAttribute('id',a);k.setAttribute('type','text/css');}return k;};function h(j,k,l){var m,n,o;for(var p=0;p<j.length;p++){if(CKEDITOR.env.webkit)for(n=0;n<k.length;n++){o=k[n][1];for(m=0;m<l.length;m++)o=o.replace(l[m][0],l[m][1]);j[p].$.sheet.addRule(k[n][0],o);}else{o=k;for(m=0;m<l.length;m++)o=o.replace(l[m][0],l[m][1]);if(CKEDITOR.env.ie)j[p].$.styleSheet.cssText+=o;else j[p].$.innerHTML+=o;}}};var i=/\$color/g;CKEDITOR.tools.extend(b,{uiColor:null,getUiColor:function(){return this.uiColor;},setUiColor:function(j){var k,l=g(CKEDITOR.document),m='.'+b.id,n=[m+' .cke_wrapper',m+'_dialog .cke_dialog_contents',m+'_dialog a.cke_dialog_tab',m+'_dialog .cke_dialog_footer'].join(','),o='background-color: $color !important;';
-if(CKEDITOR.env.webkit)k=[[n,o]];else k=n+'{'+o+'}';return(this.setUiColor=function(p){var q=[[i,p]];b.uiColor=p;h([l],k,q);h(c,e,q);})(j);}});b.on('menuShow',function(j){var k=j.data[0],l=k.element.getElementsByTag('iframe').getItem(0).getFrameDocument();if(!l.getById('cke_ui_color')){var m=g(l);c.push(m);var n=b.getUiColor();if(n)h([m],e,[[i,n]]);}});if(b.config.uiColor)b.setUiColor(b.config.uiColor);}};})());(function(){CKEDITOR.dialog?a():CKEDITOR.on('dialogPluginReady',a);function a(){CKEDITOR.dialog.on('resize',function(b){var c=b.data,d=c.width,e=c.height,f=c.dialog,g=f.parts.contents;if(c.skin!='BootstrapCK-Skin')return;g.setStyles({width:d+'px',height:e+'px'});});};})();
+CKEDITOR.skins.add( 'BootstrapCK-Skin', (function()
+{
+    var uiColorStylesheetId = 'cke_ui_color';
+
+    return {
+        editor      : { css : [ 'editor.css' ] },
+        dialog      : { css : [ 'dialog.css' ] },
+        richcombo   : { canGroup: false },
+        templates   : { css : [ 'templates.css' ] },
+        margins     : [ 0, 0, 0, 0 ],
+        init : function( editor )
+        {
+            if ( editor.config.width && !isNaN( editor.config.width ) )
+                editor.config.width -= 12;
+
+            var uiColorMenus = [];
+            var uiColorRegex = /\$color/g;
+            var uiColorMenuCss = "/* UI Color Support */\
+.cke_skin_BootstrapCK-Skin .cke_menuitem .cke_icon_wrapper\
+{\
+    background-color: $color !important;\
+    border-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover .cke_icon_wrapper,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus .cke_icon_wrapper,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:active .cke_icon_wrapper\
+{\
+    background-color: $color !important;\
+    border-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover .cke_label,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus .cke_label,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:active .cke_label\
+{\
+    background-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:hover .cke_label,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:focus .cke_label,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:active .cke_label\
+{\
+    background-color: transparent !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:hover .cke_icon_wrapper,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:focus .cke_icon_wrapper,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled:active .cke_icon_wrapper\
+{\
+    background-color: $color !important;\
+    border-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a.cke_disabled .cke_icon_wrapper\
+{\
+    background-color: $color !important;\
+    border-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuseparator\
+{\
+    background-color: $color !important;\
+}\
+\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:hover,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:focus,\
+.cke_skin_BootstrapCK-Skin .cke_menuitem a:active\
+{\
+    background-color: $color !important;\
+}";
+            // We have to split CSS declarations for webkit.
+            if ( CKEDITOR.env.webkit )
+            {
+                uiColorMenuCss = uiColorMenuCss.split( '}' ).slice( 0, -1 );
+                for ( var i = 0 ; i < uiColorMenuCss.length ; i++ )
+                    uiColorMenuCss[ i ] = uiColorMenuCss[ i ].split( '{' );
+            }
+
+            function getStylesheet( document )
+            {
+                var node = document.getById( uiColorStylesheetId );
+                if ( !node )
+                {
+                    node = document.getHead().append( 'style' );
+                    node.setAttribute( "id", uiColorStylesheetId );
+                    node.setAttribute( "type", "text/css" );
+                }
+                return node;
+            }
+
+            function updateStylesheets( styleNodes, styleContent, replace )
+            {
+                var r, i, content;
+                for ( var id  = 0 ; id < styleNodes.length ; id++ )
+                {
+                    if ( CKEDITOR.env.webkit )
+                    {
+                        for ( i = 0 ; i < styleContent.length ; i++ )
+                        {
+                            content = styleContent[ i ][ 1 ];
+                            for ( r  = 0 ; r < replace.length ; r++ )
+                                content = content.replace( replace[ r ][ 0 ], replace[ r ][ 1 ] );
+
+                            styleNodes[ id ].$.sheet.addRule( styleContent[ i ][ 0 ], content );
+                        }
+                    }
+                    else
+                    {
+                        content = styleContent;
+                        for ( r  = 0 ; r < replace.length ; r++ )
+                            content = content.replace( replace[ r ][ 0 ], replace[ r ][ 1 ] );
+
+                        if ( CKEDITOR.env.ie )
+                            styleNodes[ id ].$.styleSheet.cssText += content;
+                        else
+                            styleNodes[ id ].$.innerHTML += content;
+                    }
+                }
+            }
+
+            var uiColorRegexp = /\$color/g;
+
+            CKEDITOR.tools.extend( editor,
+            {
+                uiColor: null,
+
+                getUiColor : function()
+                {
+                    return this.uiColor;
+                },
+
+                setUiColor : function( color )
+                {
+                    var cssContent,
+                        uiStyle = getStylesheet( CKEDITOR.document ),
+                        cssId = '.' + editor.id;
+
+                    var cssSelectors =
+                        [
+                            cssId + " .cke_wrapper",
+                            cssId + "_dialog .cke_dialog_contents",
+                            cssId + "_dialog a.cke_dialog_tab",
+                            cssId + "_dialog .cke_dialog_footer"
+                        ].join( ',' );
+                    var cssProperties = "background-color: $color !important;";
+
+                    if ( CKEDITOR.env.webkit )
+                        cssContent = [ [ cssSelectors, cssProperties ] ];
+                    else
+                        cssContent = cssSelectors + '{' + cssProperties + '}';
+
+                    return ( this.setUiColor =
+                        function( color )
+                        {
+                            var replace = [ [ uiColorRegexp, color ] ];
+                            editor.uiColor = color;
+
+                            // Update general style.
+                            updateStylesheets( [ uiStyle ], cssContent, replace );
+
+                            // Update menu styles.
+                            updateStylesheets( uiColorMenus, uiColorMenuCss, replace );
+                        })( color );
+                }
+            });
+
+            editor.on( 'menuShow', function( event )
+            {
+                var panel = event.data[ 0 ];
+                var iframe = panel.element.getElementsByTag( 'iframe' ).getItem( 0 ).getFrameDocument();
+
+                // Add stylesheet if missing.
+                if ( !iframe.getById( 'cke_ui_color' ) )
+                {
+                    var node = getStylesheet( iframe );
+                    uiColorMenus.push( node );
+
+                    var color = editor.getUiColor();
+                    // Set uiColor for new menu.
+                    if ( color )
+                        updateStylesheets( [ node ], uiColorMenuCss, [ [ uiColorRegexp, color ] ] );
+                }
+            });
+
+            // Apply UI color if specified in config.
+            if ( editor.config.uiColor )
+                editor.setUiColor( editor.config.uiColor );
+        }
+    };
+})() );
+
+(function()
+{
+    CKEDITOR.dialog ? dialogSetup() : CKEDITOR.on( 'dialogPluginReady', dialogSetup );
+
+    function dialogSetup()
+    {
+        CKEDITOR.dialog.on( 'resize', function( evt )
+            {
+                var data = evt.data,
+                    width = data.width,
+                    height = data.height,
+                    dialog = data.dialog,
+                    contents = dialog.parts.contents;
+
+                if ( data.skin != 'BootstrapCK-Skin' )
+                    return;
+
+                contents.setStyles(
+                    {
+                        width : width + 'px',
+                        height : height + 'px'
+                    });
+            });
+    }
+})();
+
+/**
+ * The base user interface color to be used by the editor. Not all skins are
+ * compatible with this setting.
+ * @name CKEDITOR.config.uiColor
+ * @type String
+ * @default '' (empty)
+ * @example
+ * // Using a color code.
+ * config.uiColor = '#AADC6E';
+ * @example
+ * // Using an HTML color name.
+ * config.uiColor = 'Gold';
+ */
