@@ -80,6 +80,7 @@ width:60px;
 text-overflow:ellipsis;
 overflow:hidden;
 display:inline-block;
+float: left;
 margin:0 2px 0 4px;
 cursor:default;
 }
