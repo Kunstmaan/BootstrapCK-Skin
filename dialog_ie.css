@@ -37,31 +37,25 @@ This file contains styles to used by all versions of Internet Explorer only.
 	padding-right: 2px !important;
 }
 
-
-
-
-
-
-
-.cke_browser_ie .cke .cke_menuitem .cke_icon{
+.cke_menuitem .cke_icon{
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');
 }
-.cke_browser_ie.cke_rtl .cke .cke_menuitem .cke_icon{
+.cke_rtl .cke .cke_menuitem .cke_icon{
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');
 }
-.cke_browser_ie6 .cke .cke_menuitem .cke_icon,.cke_browser_ie .cke .cke_menuitem.cke_noalphafix .cke_icon{
+.cke .cke_menuitem .cke_icon, .cke .cke_menuitem.cke_noalphafix .cke_icon{
 filter:;
 }
 .cke .cke_menuitem .cke_disabled .cke_icon{
 filter:alpha(opacity=70);
 opacity:.70;
 }
-.cke_browser_ie .cke .cke_menuitem .cke_disabled .cke_icon{
+ .cke .cke_menuitem .cke_disabled .cke_icon{
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');
 }
-.cke_browser_ie.cke_rtl .cke .cke_menuitem .cke_disabled .cke_icon{
+.cke_rtl .cke .cke_menuitem .cke_disabled .cke_icon{
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');
 }
-.cke_browser_ie6 .cke .cke_menuitem .cke_disabled .cke_icon,.cke_browser_ie .cke .cke_menuitem.cke_noalphafix .cke_disabled .cke_icon{
+.cke .cke_menuitem .cke_disabled .cke_icon, .cke .cke_menuitem.cke_noalphafix .cke_disabled .cke_icon{
 filter:;
 }
