@@ -94,7 +94,7 @@ text-align:left;
 	margin-left: 1px;
 }
 .cke_dialog_tabs{
-height:24px;
+height:22px;
 display:inline-block;
 _display:block;
 margin-left:13px;
@@ -156,7 +156,7 @@ margin-bottom:-22px;
 margin:auto;
 }
 .cke_dialog_ui_vbox_child{
-padding:2px 0;
+padding:5px 0;
 }
 input.cke_dialog_ui_input_text,input.cke_dialog_ui_input_password{
 background-color:white;

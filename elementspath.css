@@ -53,3 +53,10 @@ float:none;
 .cke_path .cke_label{
 display:none;
 }
+
+@media print{
+	.cke_path{
+	display:none;
+	}
+}
+

@@ -24,12 +24,6 @@ The visual representation of a rich combo widget looks as follows:
 +-----------------------------------------------------------------------------------+
 */
 
-.cke_combopanel{
-border:1px solid #8F8F73;
-border-top-left-radius:0;
-height:auto;
-_height:100px;
-}
 .cke_combo a,.cke_combo a:active,.cke_combo a:hover{
 border-radius:4px;
 background:#FDFDFD none 0 -100px repeat-x;
