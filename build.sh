@@ -3,13 +3,13 @@
 
 CKBUILDER="dev/ckbuilder.jar";
 SKIN="BootstrapCK-Skin";
+BUILD_DIR="./build";
 
-rm -rf ./build;
-BUILD_DIR=$(mktemp -d /tmp/ckbuilder.XXXXXX);
-
-java -jar $CKBUILDER --build-skin . "$BUILD_DIR/build";
-mv "$BUILD_DIR/build" ./build;
+# clean
 rm -rf $BUILD_DIR;
+mkdir $BUILD_DIR;
 
-echo "built skin into ./build";
+# build 
+java -jar $CKBUILDER --build-skin . "$BUILD_DIR/$SKIN";
+echo "built skin into ./build/$SKIN";
 exit 0;
