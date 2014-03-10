@@ -1,5 +1,7 @@
 # About [BootstrapCK-Skin][BootstrapCK-Skin]
 
+!Update: This skin is for CKeditor3 use. Want the new CKeditor4 skin? https://github.com/Kunstmaan/BootstrapCK4-Skin
+
 The [BootstrapCK-Skin][BootstrapCK-Skin] is a skin for [CKEditor][CKEditor] based on [Twitter Bootstrap][Twitter Bootstrap] styles.<br />
 Some things couldn't be changed inside the skin, like the smileys and the position of the browse buttons when inserting an image or a flash.<br />
 Here's how you fix that:
